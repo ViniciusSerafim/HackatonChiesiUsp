@@ -1,0 +1,47 @@
+.nav-container{
+    display: flex;
+    justify-content: space-between;
+    padding:1vw;
+}
+
+.nav-container .nav-list{
+    display: flex;
+    align-items: center;
+}
+
+.nav-container .nav-list > li{
+    margin: 0 20px;
+    font-family: 'Roboto', sans-serif;
+    color: #2c0876;
+    font-size: 1.5vw;
+    transition: 0.3s all;
+}
+
+.nav-container .nav-list > li:hover:not(:last-child){
+    opacity: 0.4;
+}
+
+.nav-container .perfil{
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.nav-container .perfil span{
+    font-size: 1.3vw;
+    color:#000;
+}
+
+.nav-container .perfil .img-perfil{
+    margin:0 15px;
+    border-radius: 100%;
+    width: 4vw;
+    height: 4vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+
+

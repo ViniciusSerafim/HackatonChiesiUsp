@@ -1,0 +1,30 @@
+
+
+html{
+    min-width: 100vw;
+    min-height: 100vh;
+}
+body{
+    background: linear-gradient(180deg, rgba(14,224,211,1) 0%, rgba(231,230,230,1) 100%);   
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center center;
+}
+
+label, input{
+    font-family: 'Roboto', sans-serif;
+}
+
+
+
+.swiper-container {
+    width: 100%;
+    height: 100%;
+  }
+
+  .swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: #fff;
+    padding: 15vw;
+  }

@@ -1,61 +1,79 @@
-<?php
-/**
- * The template for displaying the footer
- *
- * Contains the opening of the #site-footer div and all content after.
- *
- * @link https://developer.wordpress.org/themes/basics/template-files/#template-partials
- *
- * @package WordPress
- * @subpackage Twenty_Twenty
- * @since Twenty Twenty 1.0
- */
+<footer>
 
-?>
-			<footer id="site-footer" role="contentinfo" class="header-footer-group">
 
-				<div class="section-inner">
 
-					<div class="footer-credits">
+</footer>
 
-						<p class="footer-copyright">&copy;
-							<?php
-							echo date_i18n(
-								/* translators: Copyright date format, see https://www.php.net/date */
-								_x( 'Y', 'copyright date format', 'twentytwenty' )
-							);
-							?>
-							<a href="<?php echo esc_url( home_url( '/' ) ); ?>"><?php bloginfo( 'name' ); ?></a>
-						</p><!-- .footer-copyright -->
 
-						<p class="powered-by-wordpress">
-							<a href="<?php echo esc_url( __( 'https://wordpress.org/', 'twentytwenty' ) ); ?>">
-								<?php _e( 'Powered by WordPress', 'twentytwenty' ); ?>
-							</a>
-						</p><!-- .powered-by-wordpress -->
+<script>
+	if(JSON.parse(sessionStorage.getItem('profiles')) == null){
+	let profiles = [];
 
-					</div><!-- .footer-credits -->
+	profiles.push({
+		nome: 'Usuario Teste',
+		img: `<?php bloginfo('template_url'); ?>/assets/img/perfil.jpg`,
+		usuario: 'UsuarioTeste',
+		senha: '123456'
+	});
 
-					<a class="to-the-top" href="#site-header">
-						<span class="to-the-top-long">
-							<?php
-							/* translators: %s: HTML character for up arrow. */
-							printf( __( 'To the top %s', 'twentytwenty' ), '<span class="arrow" aria-hidden="true">&uarr;</span>' );
-							?>
-						</span><!-- .to-the-top-long -->
-						<span class="to-the-top-short">
-							<?php
-							/* translators: %s: HTML character for up arrow. */
-							printf( __( 'Up %s', 'twentytwenty' ), '<span class="arrow" aria-hidden="true">&uarr;</span>' );
-							?>
-						</span><!-- .to-the-top-short -->
-					</a><!-- .to-the-top -->
+	sessionStorage.setItem('profiles', JSON.stringify(profiles));
+	}
 
-				</div><!-- .section-inner -->
 
-			</footer><!-- #site-footer -->
+	let estaLogado = sessionStorage.getItem('estaLogado');
+	let display;
+	
+	if (estaLogado == 'true') {
+		display = 'block';
+		setDisplay('#slidePropaganda', 'none')
 
-		<?php wp_footer(); ?>
+	} else {
+		display = 'none'
+		document.querySelector('.perfil').href = `<?php echo get_bloginfo('url')?>/Login`;
+		setDisplay('#slidePropaganda', 'block');
+	}
+	setDisplay('#liAgenda', display);
+	setDisplay('#liHistorico', display);
+	var perfilLogado = JSON.parse(sessionStorage.getItem('perfilLogado'));
 
-	</body>
+	if (perfilLogado != null) {
+		document.querySelector('#imgPerfil').src = perfilLogado.img;
+		document.querySelector('#nomePerfil').innerHTML = perfilLogado.nome;
+	} else {
+		document.querySelector('#imgPerfil').src = `<?php bloginfo('template_url'); ?>/assets/img/default.png`;
+		document.querySelector('#nomePerfil').innerHTML = `Fazer login ou Registrar-se`;
+	}
+
+
+	function setDisplay(selector, display) {
+		let element = document.querySelector(selector);
+
+		if(element != null){
+		element.style.display = display;
+		}
+	}
+
+
+
+
+	function checkLogin(){
+		let profiles = JSON.parse(sessionStorage.getItem('profiles'));
+
+		for(let i = 0; i < profiles.length; i++){
+			// console.log(profiles[i]);
+			// console.log(document.querySelector('#usuarioLogin'));
+			// console.log(document.querySelector('#senhaLogin'));
+			if(profiles[i].usuario == document.querySelector('#usuarioLogin').value &&
+				profiles[i].senha == document.querySelector('#senhaLogin').value){
+				sessionStorage.setItem('perfilLogado', JSON.stringify(profiles[i]));
+				sessionStorage.setItem('estaLogado', true);
+				window.location.reload();
+
+			}
+		}
+	}
+</script>
+
+</body>
+
 </html>
