@@ -35,7 +35,7 @@ global $title;
 	<header>
 		<nav class="nav-container">
 			<a  href="<?php echo get_bloginfo('url')?>" class="logo-container d-block">
-				<img src="<?php bloginfo('template_url'); ?>/assets/img/logo.png" alt="Logo">
+				<img style="max-width:100px" src="<?php bloginfo('template_url'); ?>/assets/img/logo.png" alt="Logo">
 			</a>
 			<ul class="nav-list">
 				<li id="liInicio">
@@ -43,11 +43,11 @@ global $title;
 						Início
 					</a>
 				</li>
-				<li id="liAgenda">
+				<!-- <li id="liAgenda">
 					<a href="#">
 						Agenda
 					</a>
-				</li>
+				</li> -->
 				<li id="liHistorico">
 					<a href="#">
 						Histórico
@@ -66,6 +66,5 @@ global $title;
 			</ul>
 		</nav>
 	</header>
-
 
 

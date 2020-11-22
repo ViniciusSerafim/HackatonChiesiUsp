@@ -28,3 +28,61 @@ label, input{
     background: #fff;
     padding: 15vw;
   }
+
+
+  .card-container{
+      display: flex;
+      flex-wrap: wrap;
+  }
+
+  .card{
+      width:200px;
+      min-height: 200px;
+
+      background-color: #2c0876;
+      margin: 20px 20px;
+      color:#fff;
+      font-size: 25px;
+      padding: 10px;
+      font-family: 'Roboto', sans-serif;
+
+  }
+
+  .card span{
+      margin: 10px 0;
+  }
+
+
+  .popup-container{
+      display: none;
+      justify-content: center;
+      align-items: center;
+      position: fixed;
+      top:0;
+      left:0;
+      width:100vw;
+      height: 100vh;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index:10;
+  }
+
+  .popup{
+      background-color:#2c0876;
+      padding: 40px;
+      color: #fff;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+  }
+
+  .popup input{
+      margin: 20px 0;
+  }
+  .popup .close-btn{
+      position: absolute;
+      top: 5%;
+      right:5%;
+      font-size:20px;
+      color:#fff;
+      cursor: pointer;
+  }
